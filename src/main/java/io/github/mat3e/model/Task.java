@@ -1,6 +1,9 @@
 package io.github.mat3e.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tasks")
@@ -8,8 +11,12 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank(message = "Description must not be empty")
     private String description;
     private boolean done;
+
+    public Task() {
+    }
 
     public int getId() {
         return id;
