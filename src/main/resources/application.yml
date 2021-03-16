@@ -18,5 +18,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-task.allowMultipleTasksFromTemplate: false
+  main:
+    banner-mode: off
+task.template.allowMultipleTasks: false
 
