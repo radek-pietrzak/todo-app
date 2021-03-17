@@ -3,6 +3,7 @@ package io.github.mat3e.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "task_group")
@@ -13,9 +14,8 @@ public class TaskGroup {
     @NotBlank(message = "Description must not be empty")
     private String description;
     private boolean done;
-    @Embedded
-    private Audit audit = new Audit();
-
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "group")
+    private Set<Task> tasks;
 
     public TaskGroup() {
     }
@@ -45,4 +45,11 @@ public class TaskGroup {
     }
 
 
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
 }
