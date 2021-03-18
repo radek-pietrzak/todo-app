@@ -14,12 +14,9 @@ import java.util.List;
 
 @Repository
 public interface SqlTaskRepository extends TaskRepository, JpaRepository<Task, Integer> {
-
-    List<Task> findByDone(@Param("state") boolean done);
-
-//    @Override
-//    @Query(nativeQuery = true, value = "select count(*) > 0 from todo_db.tasks where id=:1")
-//    boolean existsById(@Param("id") Integer id);
+    @Override
+    @Query(nativeQuery = true, value = "select count(*) > 0 from todo_db.tasks where id=:1")
+    boolean existsById(@Param("id") Integer id);
 
     @Override
     boolean existsByDoneIsFalseAndGroup_Id(Integer groupId);

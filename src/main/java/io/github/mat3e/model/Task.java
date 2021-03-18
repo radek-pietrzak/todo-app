@@ -2,6 +2,7 @@ package io.github.mat3e.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.security.PublicKey;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,6 +22,11 @@ public class Task {
     private TaskGroup group;
 
     public Task() {
+    }
+
+    public Task(String description, LocalDateTime deadline) {
+        this.description = description;
+        this.deadline = deadline;
     }
 
     public int getId() {
