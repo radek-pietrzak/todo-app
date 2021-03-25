@@ -1,15 +1,14 @@
 package io.github.mat3e.logic;
+
 import io.github.mat3e.model.TaskGroup;
 import io.github.mat3e.model.TaskGroupRepository;
 import io.github.mat3e.model.TaskRepository;
 import io.github.mat3e.model.projection.GroupReadModel;
 import io.github.mat3e.model.projection.GroupWriteModel;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class TaskGroupService {
     private TaskGroupRepository repository;
     private TaskRepository taskRepository;
@@ -40,4 +39,3 @@ public class TaskGroupService {
         repository.save(result);
     }
 }
-

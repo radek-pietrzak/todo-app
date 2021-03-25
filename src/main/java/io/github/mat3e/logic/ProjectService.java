@@ -7,13 +7,11 @@ import io.github.mat3e.model.Task;
 import io.github.mat3e.model.TaskGroup;
 import io.github.mat3e.model.TaskGroupRepository;
 import io.github.mat3e.model.projection.GroupReadModel;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class ProjectService {
     private ProjectRepository repository;
     private TaskGroupRepository taskGroupRepository;

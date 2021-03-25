@@ -1,8 +1,14 @@
 package io.github.mat3e.model;
 
-import javax.persistence.*;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.security.PublicKey;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,7 +17,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "Description must not be empty")
+    @NotBlank(message = "Task's description must not be empty")
     private String description;
     private boolean done;
     private LocalDateTime deadline;
@@ -21,7 +27,7 @@ public class Task {
     @JoinColumn(name = "task_group_id")
     private TaskGroup group;
 
-    public Task() {
+    Task() {
     }
 
     public Task(String description, LocalDateTime deadline) {
@@ -33,7 +39,7 @@ public class Task {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(final int id) {
         this.id = id;
     }
 
@@ -41,7 +47,7 @@ public class Task {
         return description;
     }
 
-    public void setDescription(String description) {
+    void setDescription(final String description) {
         this.description = description;
     }
 
@@ -49,7 +55,7 @@ public class Task {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(final boolean done) {
         this.done = done;
     }
 
@@ -57,15 +63,15 @@ public class Task {
         return deadline;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    void setDeadline(final LocalDateTime deadline) {
         this.deadline = deadline;
     }
 
-    public TaskGroup getGroup() {
+    TaskGroup getGroup() {
         return group;
     }
 
-    public void setGroup(TaskGroup group) {
+    void setGroup(final TaskGroup group) {
         this.group = group;
     }
 
@@ -75,6 +81,4 @@ public class Task {
         deadline = source.deadline;
         group = source.group;
     }
-
-
 }
